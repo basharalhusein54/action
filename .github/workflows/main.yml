@@ -19,8 +19,7 @@ jobs:
 
       - name: ✅ Debug Print Environment & Keys (safe)
         run: |
-          echo "::add-mask::fake"
-          echo "$RSA_PUBLIC_KEY"
+          echo "First 10 chars of RSA_PUBLIC_KEY: ${RSA_PUBLIC_KEY:0:10}"
 
   
           
