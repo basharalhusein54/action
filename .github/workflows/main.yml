@@ -10,16 +10,16 @@ jobs:
   run-application-check:
     runs-on: ubuntu-latest
 
-    env:
-      RSA_PUBLIC_KEY: ${{ secrets.RSA_PUBLIC_KEY}}
+    
       
 
     steps:
-     
-
+    
       - name: ✅ Debug Print Environment & Keys (safe)
         run: |
-          echo "${{ secrets.RSA_PUBLIC_KEY }}" | cut -c1-100
+          echo "$RSA_PUBLIC_KEY" | base64 --decode > key.pem
+          echo "Decoded key:"
+          cat key.pem
 
   
           
