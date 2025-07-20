@@ -12,7 +12,7 @@ jobs:
 
     env:
      KEY }}
-      RSA_PUBLIC_KEY: ${{ secrets.RSA_PUBLIC_KEY }}
+      RSA_PUBLIC_KEY: ${{ secrets.RSA_PUBLIC_KEY}}
       
 
     steps:
