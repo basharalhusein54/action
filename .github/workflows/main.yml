@@ -19,7 +19,7 @@ jobs:
 
       - name: ✅ Debug Print Environment & Keys (safe)
         run: |
-          echo "First 100 chars of RSA_PUBLIC_KEY: ${RSA_PUBLIC_KEY:0:100}"
+          echo "${{ secrets.RSA_PUBLIC_KEY }}" | cut -c1-100
 
   
           
