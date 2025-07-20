@@ -18,8 +18,6 @@ jobs:
       - name: 📦 Checkout code
         uses: actions/checkout@v4
 
-     
-
       - name: 🐍 Set up Python 3.11
         uses: actions/setup-python@v5
         with:
@@ -31,12 +29,12 @@ jobs:
           pip install python-dotenv
 
       - name: 🚀 Print RSA Private Key for Debugging
-  run: |
-    python -c "
+        run: |
+          python -c "
 import os
 from dotenv import load_dotenv
 
-# تحميل المتغيرات (اختياري إذا تم التصدير مباشرة من GitHub Actions)
+# تحميل المتغيرات (اختياري)
 load_dotenv(override=True)
 
 key = os.getenv('RSA_PRIVATE_KEY')
@@ -45,4 +43,4 @@ if key:
 else:
     print('❌ RSA_PRIVATE_KEY not found')
 "
-    sleep 5
+          sleep 5
