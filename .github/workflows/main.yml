@@ -1,0 +1,24 @@
+name: Verify Application Startup
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  run-application-check:
+    runs-on: ubuntu-latest
+
+    env:
+     KEY }}
+      RSA_PUBLIC_KEY: ${{ secrets.RSA_PUBLIC_KEY }}
+      
+
+    steps:
+     
+
+      - name: ✅ Debug Print Environment & Keys (safe)
+        run: |
+          echo "🔐 RSA_PUBLIC_KEY starts with: ${RSA_PUBLIC_KEY}"
+          
