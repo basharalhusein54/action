@@ -19,5 +19,8 @@ jobs:
 
       - name: ✅ Debug Print Environment & Keys (safe)
         run: |
-          echo "🔐 RSA_PUBLIC_KEY starts with:: ${RSA_PUBLIC_KEY}"
+          echo "::add-mask::fake"
+          echo "$RSA_PUBLIC_KEY"
+
+  
           
