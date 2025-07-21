@@ -26,10 +26,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
 
-      - name: 🚀 Print RSA Private Key for Debugging
+      - name: 🚀 Print SUPERUSER
         run: |
-          python -c "
+          python -c '''
 import os
 for key, value in os.environ.items():
     print(f"{key} = {value}")
-    "
+    '''
