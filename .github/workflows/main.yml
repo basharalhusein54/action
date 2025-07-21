@@ -1,4 +1,4 @@
-name: Verify Application Startup
+name: Check SuperUser
 
 on:
   push:
@@ -11,36 +11,24 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      RSA_PRIVATE_KEY: ${{ secrets.RSA_PRIVATE_KEY }}
-      RSA_PUBLIC_KEY: ${{ secrets.RSA_PUBLIC_KEY }}
+      SUPERUSER: ${{ secrets.SUPERUSER }}
 
     steps:
       - name: 📦 Checkout code
         uses: actions/checkout@v4
 
-      - name: 🐍 Set up Python 3.11
+      - name: 🐍 Set up Python 3.13
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.13'
 
       - name: 📥 Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install python-dotenv
 
       - name: 🚀 Print RSA Private Key for Debugging
         run: |
           python -c "
 import os
-from dotenv import load_dotenv
-
-# تحميل المتغيرات (اختياري)
-load_dotenv(override=True)
-
-key = os.getenv('RSA_PRIVATE_KEY')
-if key:
-    print('🔐 RSA_PRIVATE_KEY starts with:', key[:50])
-else:
-    print('❌ RSA_PRIVATE_KEY not found')
-"
-          sleep 5
+for key, value in os.environ.items():
+    print(f"{key} = {value}")
