@@ -26,6 +26,19 @@ jobs:
         run: |
           python -m pip install --upgrade pip
 
-      - name: 🧪 Parse SUPERUSER JSON
+            - name: 🧪 Parse SUPERUSER JSON
         run: |
-          python -c "import os, json; data = json.loads(os.getenv('SUPERUSER')); print(data)"
+          python -c "
+import os, json
+superuser = os.getenv('SUPERUSER')
+if not superuser:
+    print('❌ SUPERUSER env var is missing or empty')
+else:
+    try:
+        data = json.loads(superuser)
+        print('✅ SUPERUSER JSON Loaded:')
+        for k, v in data.items():
+            print(f'{k}: {v}')
+    except Exception as e:
+        print('❌ Failed to parse SUPERUSER JSON:', e)
+"
